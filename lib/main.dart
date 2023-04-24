@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_application/login/screens/login_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:my_flutter_application/screens/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +29,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const LoginScreen(),
+
       debugShowCheckedModeBanner: false, //Disable Degub Flag
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }
